@@ -350,7 +350,7 @@ local function buildGUI()
     })
 
     W:Tag({ 
-        Title = "V2.3 FINAL", 
+        Title = "V5.9", 
         Icon = "crown", 
         Color = Color3.fromHex("#ffcc00"), 
         Radius = 13 
