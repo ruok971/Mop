@@ -329,36 +329,36 @@ local Icons = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Fo
 
 Icons.SetIconsType("lucide") -- lucide, craft and more...
 
-local Window =
-    WindUI:CreateWindow(
+local Window = WindUI:CreateWindow(
     {
-        Icon = "rbxassetid://116912491561156", -- my custom vector* icon
-        IconThemed = true,
-        
-        Title = "Zeion Hub | Block Spin ",
-        Author = "by x2SAXZRLzzz",
+        Title = "Vortex Hub | Block Spin",
+        Icon = "rbxassetid://10723343321",
+        Author = "by ยังหลอน",
         Folder = "zeion's",
         Size = UDim2.fromOffset(400, 400),
         MinSize = Vector2.new(560, 350),
         MaxSize = Vector2.new(850, 560),
         Transparent = true,
         Theme = "Dark",
+        AccentColor = Color3.fromRGB(170, 0, 255),
         Resizable = true,
         SideBarWidth = 200,
         BackgroundImageTransparency = 0.42,
         HideSearchBar = false,
         ScrollBarEnabled = false,
-        
+
         OpenButton = {
-            Title = "Zeion Hub",
+            Title = "Vortex Hub",
             CornerRadius = UDim.new(1, 0),
             StrokeThickness = 3,
             Enabled = true,
             Draggable = true,
-            OnlyMobile = false
+            OnlyMobile = false,
+            Color = Color3.fromRGB(170, 0, 255),
         }
     }
 )
+
 
 Window:Tag(
     {
