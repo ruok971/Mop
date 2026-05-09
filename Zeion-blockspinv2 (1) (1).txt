@@ -331,20 +331,20 @@ Icons.SetIconsType("lucide") -- lucide, craft and more...
 
 local function buildGUI()
     local guiColor1 = Color3.fromRGB(0, 0, 0)
-    local guiColor2 = Color3.fromRGB(255, 0, 0)
+    local guiColor2 = Color3.fromRGB(210, 180, 255)
 
     local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
     
     local W = WindUI:CreateWindow({ 
-        Title = "Aetherial Hub", 
-        Icon = "skull", 
+        Title = "Vortex Hub", 
+        Icon = "Bolt", 
         Author = "by ยังหลอน",
         Theme = "Dark"
     })
 
     W:EditOpenButton({ 
-        Title = "Aetherial Hub", 
-        Icon = "ghost", 
+        Title = "Vortex Hub", 
+        Icon = "Spiral", 
         Color = ColorSequence.new(guiColor1, guiColor2), 
         Draggable = true 
     })
