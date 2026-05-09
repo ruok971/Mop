@@ -330,21 +330,21 @@ local Icons = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Fo
 Icons.SetIconsType("lucide") -- lucide, craft and more...
 
 local function buildGUI()
-    local guiColor1 = Color3.fromRGB(0, 0, 0)
-    local guiColor2 = Color3.fromRGB(200, 162, 200)
+    local guiColor1 = Color3.fromHex("#8E2DE2") 
+local guiColor2 = Color3.fromHex("#4A00E0")
 
     local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
     
     local W = WindUI:CreateWindow({ 
         Title = "Vortex Hub", 
-        Icon = "rbxassetid://10734950339", 
+        Icon = "atom", 
         Author = "by ยังหลอน",
         Theme = "Dark"
     })
 
     W:EditOpenButton({ 
         Title = "Vortex Hub", 
-        Icon = "rbxassetid://10734950339", 
+        Icon = "atom", 
         Color = ColorSequence.new(guiColor1, guiColor2), 
         Draggable = true 
     })
