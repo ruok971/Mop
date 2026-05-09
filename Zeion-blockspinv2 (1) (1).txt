@@ -329,35 +329,39 @@ local Icons = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Fo
 
 Icons.SetIconsType("lucide") -- lucide, craft and more...
 
-local Window = WindUI:CreateWindow(
-    {
-        Title = "Vortex Hub | Block Spin",
-        Icon = "rbxassetid://10723343321",
-        Author = "by ยังหลอน",
-        Folder = "zeion's",
-        Size = UDim2.fromOffset(400, 400),
-        MinSize = Vector2.new(560, 350),
-        MaxSize = Vector2.new(850, 560),
-        Transparent = true,
-        Theme = "Dark",
-        AccentColor = Color3.fromRGB(170, 0, 255),
-        Resizable = true,
-        SideBarWidth = 200,
-        BackgroundImageTransparency = 0.42,
-        HideSearchBar = false,
-        ScrollBarEnabled = false,
+local function buildGUI()
+    local guiColor1 = Color3.fromRGB(0, 0, 0)
+    local guiColor2 = Color3.fromRGB(255, 0, 0)
 
-        OpenButton = {
-            Title = "Vortex Hub",
-            CornerRadius = UDim.new(1, 0),
-            StrokeThickness = 3,
-            Enabled = true,
-            Draggable = true,
-            OnlyMobile = false,
-            Color = Color3.fromRGB(170, 0, 255),
-        }
-    }
-)
+    local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+    
+    local W = WindUI:CreateWindow({ 
+        Title = "Aetherial Hub", 
+        Icon = "skull", 
+        Author = "by ยังหลอน",
+        Theme = "Dark"
+    })
+
+    W:EditOpenButton({ 
+        Title = "Aetherial Hub", 
+        Icon = "ghost", 
+        Color = ColorSequence.new(guiColor1, guiColor2), 
+        Draggable = true 
+    })
+
+    W:Tag({ 
+        Title = "V2.3 FINAL", 
+        Icon = "crown", 
+        Color = Color3.fromHex("#ffcc00"), 
+        Radius = 13 
+    })
+    
+    return W
+end
+
+buildGUI()
+
+
 
 
 Window:Tag(
