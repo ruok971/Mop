@@ -1320,48 +1320,49 @@ else
     FOVCorner.CornerRadius = UDim.new(1, 0)
     FOVCorner.Parent = FOVCircleFrame
 
--- Tracer GUI
-   TracerGui = Instance.new("ScreenGui")
-TracerGui.Name = "SilentAimTracer"
-TracerGui.IgnoreGuiInset = true
-TracerGui.ResetOnSpawn = false
-TracerGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-TracerGui.Parent = game:GetService("CoreGui")
-
-TracerFrame = Instance.new("Frame")
-TracerFrame.Name = "Line"
-TracerFrame.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- เปลี่ยนเป็นสีแดง
-TracerFrame.BorderSizePixel = 0
-TracerFrame.AnchorPoint = Vector2.new(0, 0.5)
-TracerFrame.Size = UDim2.new(0, 0, 0, 2)
-TracerFrame.Visible = false
-TracerFrame.Parent = TracerGui
-
--- Target Circle GUI
-TargetCircleGui = Instance.new("ScreenGui")
-TargetCircleGui.Name = "SilentAimTarget"
-TargetCircleGui.IgnoreGuiInset = true
-TargetCircleGui.ResetOnSpawn = false
-TargetCircleGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-TargetCircleGui.Parent = game:GetService("CoreGui")
-
-TargetCircleFrame = Instance.new("Frame")
-TargetCircleFrame.Name = "Circle"
-TargetCircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-TargetCircleFrame.BackgroundTransparency = 1
-TargetCircleFrame.Size = UDim2.new(0, 30, 0, 30)
-TargetCircleFrame.Visible = false
-TargetCircleFrame.Parent = TargetCircleGui
-
-local TargetStroke = Instance.new("UIStroke")
-TargetStroke.Color = Color3.fromRGB(255, 0, 0) -- เปลี่ยนเป็นสีแดง
-TargetStroke.Thickness = 2
-TargetStroke.Transparency = 0
-TargetStroke.Parent = TargetCircleFrame
-
-local TargetCorner = Instance.new("UICorner")
-TargetCorner.CornerRadius = UDim.new(1, 0)
-TargetCorner.Parent = TargetCircleFrame
+    -- Tracer GUI
+    TracerGui = Instance.new("ScreenGui")
+    TracerGui.Name = "SilentAimTracer"
+    TracerGui.IgnoreGuiInset = true
+    TracerGui.ResetOnSpawn = false
+    TracerGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    TracerGui.Parent = game:GetService("CoreGui")
+    
+    TracerFrame = Instance.new("Frame")
+    TracerFrame.Name = "Line"
+    TracerFrame.BackgroundColor3 = Color3.fromRGB(124, 252, 0)
+    TracerFrame.BorderSizePixel = 0
+    TracerFrame.AnchorPoint = Vector2.new(0, 0.5)
+    TracerFrame.Size = UDim2.new(0, 0, 0, 2)
+    TracerFrame.Visible = false
+    TracerFrame.Parent = TracerGui
+    
+    -- Target Circle GUI
+    TargetCircleGui = Instance.new("ScreenGui")
+    TargetCircleGui.Name = "SilentAimTarget"
+    TargetCircleGui.IgnoreGuiInset = true
+    TargetCircleGui.ResetOnSpawn = false
+    TargetCircleGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    TargetCircleGui.Parent = game:GetService("CoreGui")
+    
+    TargetCircleFrame = Instance.new("Frame")
+    TargetCircleFrame.Name = "Circle"
+    TargetCircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    TargetCircleFrame.BackgroundTransparency = 1
+    TargetCircleFrame.Size = UDim2.new(0, 30, 0, 30)
+    TargetCircleFrame.Visible = false
+    TargetCircleFrame.Parent = TargetCircleGui
+    
+    local TargetStroke = Instance.new("UIStroke")
+    TargetStroke.Color = Color3.fromRGB(255, 250, 250)
+    TargetStroke.Thickness = 2
+    TargetStroke.Transparency = 0
+    TargetStroke.Parent = TargetCircleFrame
+    
+    local TargetCorner = Instance.new("UICorner")
+    TargetCorner.CornerRadius = UDim.new(1, 0)
+    TargetCorner.Parent = TargetCircleFrame
+end
 
 -- ฟังก์ชันคำนวณจุดบนวงกลม
 local function GetCirclePoint(center, radius, angle)
