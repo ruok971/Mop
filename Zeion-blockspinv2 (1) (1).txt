@@ -1321,8 +1321,7 @@ else
     FOVCorner.Parent = FOVCircleFrame
 
 -- Tracer GUI
-   -- Tracer GUI
-TracerGui = Instance.new("ScreenGui")
+   TracerGui = Instance.new("ScreenGui")
 TracerGui.Name = "SilentAimTracer"
 TracerGui.IgnoreGuiInset = true
 TracerGui.ResetOnSpawn = false
