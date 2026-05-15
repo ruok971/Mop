@@ -1302,16 +1302,37 @@ else
     FOVCircleFrame.Parent = FOVCircleGui
     
     local FOVStroke = Instance.new("UIStroke")
-    FOVStroke.Thickness = 3
+    FOVStroke.Thickness = 1.5
     FOVStroke.Transparency = 0
     FOVStroke.Parent = FOVCircleFrame
     
     local FOVGradient = Instance.new("UIGradient")
+    FOVGradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),
+        ColorSequenceKeypoint.new(0.2, Color3.fromRGB(255, 255, 0)),
+        ColorSequenceKeypoint.new(0.4, Color3.fromRGB(0, 255, 0)),
+        ColorSequenceKeypoint.new(0.6, Color3.fromRGB(0, 255, 255)),
+        ColorSequenceKeypoint.new(0.8, Color3.fromRGB(0, 0, 255)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 255))
+    })
     FOVGradient.Parent = FOVStroke
     
     local FOVCorner = Instance.new("UICorner")
     FOVCorner.CornerRadius = UDim.new(1, 0)
     FOVCorner.Parent = FOVCircleFrame
+
+    task.spawn(function()
+        while true do
+            for i = 0, 1, 0.01 do
+                if FOVGradient then
+                    FOVGradient.Rotation = i * 360
+                end
+                task.wait(0.02)
+            end
+        end
+    end)
+
+
     
     -- Tracer GUI
     TracerGui = Instance.new("ScreenGui")
