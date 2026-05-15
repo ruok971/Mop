@@ -1321,8 +1321,8 @@ else
     FOVCorner.Parent = FOVCircleFrame
 
  -- Tracer GUI
-            TracerGui = Instance.new("ScreenGui")
-    TracerGui.Name = "SilentAimVisuals"
+      TracerGui = Instance.new("ScreenGui")
+    TracerGui.Name = "SilentAimTracer"
     TracerGui.IgnoreGuiInset = true
     TracerGui.ResetOnSpawn = false
     TracerGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -1337,24 +1337,6 @@ else
     TracerFrame.Size = UDim2.new(0, 0, 0, 1)
     TracerFrame.Visible = false
     TracerFrame.Parent = TracerGui
-    
-    TargetCircleFrame = Instance.new("Frame")
-    TargetCircleFrame.Name = "TargetMark"
-    TargetCircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-    TargetCircleFrame.BackgroundTransparency = 1
-    TargetCircleFrame.Size = UDim2.new(0, 25, 0, 25)
-    TargetCircleFrame.Visible = false
-    TargetCircleFrame.Parent = TracerGui
-    
-    local TargetStroke = Instance.new("UIStroke")
-    TargetStroke.Color = Color3.fromRGB(255, 0, 0)
-    TargetStroke.Thickness = 1.5
-    TargetStroke.Transparency = 0
-    TargetStroke.Parent = TargetCircleFrame
-    
-    local TargetCorner = Instance.new("UICorner")
-    TargetCorner.CornerRadius = UDim.new(1, 0)
-    TargetCorner.Parent = TargetCircleFrame
 end
 
 -- ฟังก์ชันคำนวณจุดบนวงกลม
