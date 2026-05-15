@@ -1321,22 +1321,61 @@ else
     FOVCorner.Parent = FOVCircleFrame
 
  -- Tracer GUI
-      TracerGui = Instance.new("ScreenGui")
-    TracerGui.Name = "SilentAimTracer"
-    TracerGui.IgnoreGuiInset = true
-    TracerGui.ResetOnSpawn = false
-    TracerGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    TracerGui.Parent = game:GetService("CoreGui")
+      local MainGui = Instance.new("ScreenGui")
+MainGui.Name = "CustomSilentAimVisuals"
+MainGui.IgnoreGuiInset = true
+MainGui.ResetOnSpawn = false
+MainGui.DisplayOrder = 10
+MainGui.Parent = game:GetService("CoreGui")
+
+local TargetCircle = Instance.new("Frame")
+TargetCircle.Name = "TargetCircle"
+TargetCircle.AnchorPoint = Vector2.new(0.5, 0.5)
+TargetCircle.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+TargetCircle.BackgroundTransparency = 0.8
+TargetCircle.Size = UDim2.new(0, 40, 0, 40)
+TargetCircle.Visible = false
+TargetCircle.Parent = MainGui
+
+local CircleStroke = Instance.new("UIStroke")
+CircleStroke.Color = Color3.fromRGB(255, 0, 0)
+CircleStroke.Thickness = 2
+CircleStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+CircleStroke.Parent = TargetCircle
+
+local CircleCorner = Instance.new("UICorner")
+CircleCorner.CornerRadius = UDim.new(1, 0)
+CircleCorner.Parent = TargetCircle
+
+local TracerLine = Instance.new("Frame")
+TracerLine.Name = "TracerLine"
+TracerLine.AnchorPoint = Vector2.new(0, 0.5)
+TracerLine.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+TracerLine.BorderSizePixel = 0
+TracerLine.Size = UDim2.new(0, 0, 0, 2)
+TracerLine.Visible = false
+TracerLine.Parent = MainGui
+
+local function UpdateVisuals(targetPosition2D)
+    local screenCenter = Vector2.new(MainGui.AbsoluteSize.X / 2, MainGui.AbsoluteSize.Y / 2)
     
-    TracerFrame = Instance.new("Frame")
-    TracerFrame.Name = "Line"
-    TracerFrame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-    TracerFrame.BorderSizePixel = 0
-    TracerFrame.AnchorPoint = Vector2.new(0, 0.5)
-    TracerFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-    TracerFrame.Size = UDim2.new(0, 0, 0, 1)
-    TracerFrame.Visible = false
-    TracerFrame.Parent = TracerGui
+    if targetPosition2D then
+        TargetCircle.Position = UDim2.new(0, targetPosition2D.X, 0, targetPosition2D.Y)
+        TargetCircle.Visible = true
+        
+        local startPos = screenCenter
+        local endPos = targetPosition2D
+        local distance = (startPos - endPos).Magnitude
+        local angle = math.deg(math.atan2(endPos.Y - startPos.Y, endPos.X - startPos.X))
+        
+        TracerLine.Position = UDim2.new(0, startPos.X, 0, startPos.Y)
+        TracerLine.Size = UDim2.new(0, distance, 0, 2)
+        TracerLine.Rotation = angle
+        TracerLine.Visible = true
+    else
+        TargetCircle.Visible = false
+        TracerLine.Visible = false
+    end
 end
 
 -- ฟังก์ชันคำนวณจุดบนวงกลม
