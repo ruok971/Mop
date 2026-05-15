@@ -1301,7 +1301,7 @@ else
     FOVCircleFrame.Parent = FOVCircleGui
     
     local FOVStroke = Instance.new("UIStroke")
-    FOVStroke.Thickness = 1.2 -- ปรับให้บางลงจากเดิม 3
+    FOVStroke.Thickness = 2 -- ปรับให้บางลงจากเดิม 3
     FOVStroke.Transparency = 0
     FOVStroke.Parent = FOVCircleFrame
     
@@ -1319,66 +1319,50 @@ else
     local FOVCorner = Instance.new("UICorner")
     FOVCorner.CornerRadius = UDim.new(1, 0)
     FOVCorner.Parent = FOVCircleFrame
-local UIS = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-local CoreGui = game:GetService("CoreGui")
 
-local ExistingGui = CoreGui:FindFirstChild("YNW_SilentAim_Integrated")
-if ExistingGui then ExistingGui:Destroy() end
+-- Tracer GUI
+   -- Tracer GUI
+TracerGui = Instance.new("ScreenGui")
+TracerGui.Name = "SilentAimTracer"
+TracerGui.IgnoreGuiInset = true
+TracerGui.ResetOnSpawn = false
+TracerGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+TracerGui.Parent = game:GetService("CoreGui")
 
-local MainGui = Instance.new("ScreenGui")
-MainGui.Name = "YNW_SilentAim_Integrated"
-MainGui.IgnoreGuiInset = true
-MainGui.ResetOnSpawn = false
-MainGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-MainGui.Parent = CoreGui
+TracerFrame = Instance.new("Frame")
+TracerFrame.Name = "Line"
+TracerFrame.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- เปลี่ยนเป็นสีแดง
+TracerFrame.BorderSizePixel = 0
+TracerFrame.AnchorPoint = Vector2.new(0, 0.5)
+TracerFrame.Size = UDim2.new(0, 0, 0, 2)
+TracerFrame.Visible = false
+TracerFrame.Parent = TracerGui
 
-local TargetCircle = Instance.new("Frame")
-TargetCircle.Name = "TargetCircle"
-TargetCircle.AnchorPoint = Vector2.new(0.5, 0.5)
-TargetCircle.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-TargetCircle.BackgroundTransparency = 0.8
-TargetCircle.Size = UDim2.new(0, 40, 0, 40)
-TargetCircle.Visible = false
-TargetCircle.Parent = MainGui
+-- Target Circle GUI
+TargetCircleGui = Instance.new("ScreenGui")
+TargetCircleGui.Name = "SilentAimTarget"
+TargetCircleGui.IgnoreGuiInset = true
+TargetCircleGui.ResetOnSpawn = false
+TargetCircleGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+TargetCircleGui.Parent = game:GetService("CoreGui")
+
+TargetCircleFrame = Instance.new("Frame")
+TargetCircleFrame.Name = "Circle"
+TargetCircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+TargetCircleFrame.BackgroundTransparency = 1
+TargetCircleFrame.Size = UDim2.new(0, 30, 0, 30)
+TargetCircleFrame.Visible = false
+TargetCircleFrame.Parent = TargetCircleGui
 
 local TargetStroke = Instance.new("UIStroke")
-TargetStroke.Color = Color3.fromRGB(255, 0, 0)
+TargetStroke.Color = Color3.fromRGB(255, 0, 0) -- เปลี่ยนเป็นสีแดง
 TargetStroke.Thickness = 2
-TargetStroke.Parent = TargetCircle
+TargetStroke.Transparency = 0
+TargetStroke.Parent = TargetCircleFrame
 
 local TargetCorner = Instance.new("UICorner")
 TargetCorner.CornerRadius = UDim.new(1, 0)
-TargetCorner.Parent = TargetCircle
-
-local TracerLine = Instance.new("Frame")
-TracerLine.Name = "TracerLine"
-TracerLine.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-TracerLine.BorderSizePixel = 0
-TracerLine.AnchorPoint = Vector2.new(0, 0.5)
-TracerLine.Visible = false
-TracerLine.Parent = MainGui
-
-_G.UpdateSilentAimVisuals = function(targetPosition)
-    if not MainGui or not MainGui.Parent then return end
-    
-    pcall(function()
-        local screenCenter = Vector2.new(MainGui.AbsoluteSize.X / 2, MainGui.AbsoluteSize.Y / 2)
-        
-        TargetCircle.Position = UDim2.new(0, targetPosition.X, 0, targetPosition.Y)
-        
-        local direction = targetPosition - screenCenter
-        local distance = direction.Magnitude
-        local angle = math.atan2(direction.Y, direction.X)
-        
-        TracerLine.Size = UDim2.new(0, distance, 0, 2)
-        TracerLine.Position = UDim2.new(0, screenCenter.X, 0, screenCenter.Y)
-        TracerLine.Rotation = math.deg(angle)
-        
-        TargetCircle.Visible = true
-        TracerLine.Visible = true
-    end)
-end
+TargetCorner.Parent = TargetCircleFrame
 
 -- ฟังก์ชันคำนวณจุดบนวงกลม
 local function GetCirclePoint(center, radius, angle)
