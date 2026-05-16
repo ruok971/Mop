@@ -330,21 +330,21 @@ local Icons = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Fo
 Icons.SetIconsType("lucide") -- lucide, craft and more...
 
 local function buildGUI()
-    local guiColor1 = Color3.fromHex("#8E2DE2") 
-local guiColor2 = Color3.fromHex("#4A00E0")
+    local guiColor1 = Color3.fromHex("#00VCE6") 
+local guiColor2 = Color3.fromHex("#1A2A6C")
 
     local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
     
     local W = WindUI:CreateWindow({ 
         Title = "Vortex Hub", 
-        Icon = "atom", 
+        Icon = "awords", 
         Author = "by ยังหลอน",
         Theme = "Dark"
     })
 
     W:EditOpenButton({ 
         Title = "Vortex Hub", 
-        Icon = "atom", 
+        Icon = "swords", 
         Color = ColorSequence.new(guiColor1, guiColor2), 
         Draggable = true 
     })
@@ -1285,40 +1285,30 @@ else
     -- ===== Mobile: ใช้ ScreenGui แบบ Gradient =====
     -- FOV Circle GUI
     FOVCircleGui = Instance.new("ScreenGui")
-    FOVCircleGui.Name = "SilentAimFOV"
-    FOVCircleGui.IgnoreGuiInset = true
-    FOVCircleGui.ResetOnSpawn = false
-    FOVCircleGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    FOVCircleGui.Parent = game:GetService("CoreGui")
-    
-    FOVCircleFrame = Instance.new("Frame")
-    FOVCircleFrame.Name = "Circle"
-    FOVCircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-    FOVCircleFrame.BackgroundTransparency = 1
-    FOVCircleFrame.Size = UDim2.new(0, FOVRadius * 2, 0, FOVRadius * 2)
-    FOVCircleFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-    FOVCircleFrame.Visible = false
-    FOVCircleFrame.Parent = FOVCircleGui
-    
-    local FOVStroke = Instance.new("UIStroke")
-    FOVStroke.Thickness = 2 -- ปรับให้บางลงจากเดิม 3
-    FOVStroke.Transparency = 0
-    FOVStroke.Parent = FOVCircleFrame
-    
-    local FOVGradient = Instance.new("UIGradient")
-    FOVGradient.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),
-        ColorSequenceKeypoint.new(0.2, Color3.fromRGB(255, 255, 0)),
-        ColorSequenceKeypoint.new(0.4, Color3.fromRGB(0, 255, 0)),
-        ColorSequenceKeypoint.new(0.6, Color3.fromRGB(0, 255, 255)),
-        ColorSequenceKeypoint.new(0.8, Color3.fromRGB(0, 0, 255)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 255))
-    })
-    FOVGradient.Parent = FOVStroke
-    
-    local FOVCorner = Instance.new("UICorner")
-    FOVCorner.CornerRadius = UDim.new(1, 0)
-    FOVCorner.Parent = FOVCircleFrame
+FOVCircleGui.Name = "SilentAimFOV"
+FOVCircleGui.IgnoreGuiInset = true
+FOVCircleGui.ResetOnSpawn = false
+FOVCircleGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+FOVCircleGui.Parent = game:GetService("CoreGui")
+
+FOVCircleFrame = Instance.new("Frame")
+FOVCircleFrame.Name = "Circle"
+FOVCircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+FOVCircleFrame.BackgroundTransparency = 1
+FOVCircleFrame.Size = UDim2.new(0, FOVRadius * 2, 0, FOVRadius * 2)
+FOVCircleFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+FOVCircleFrame.Visible = false
+FOVCircleFrame.Parent = FOVCircleGui
+
+local FOVStroke = Instance.new("UIStroke")
+FOVStroke.Thickness = 2 
+FOVStroke.Transparency = 0
+FOVStroke.Color = Color3.fromRGB(255, 235, 59) 
+FOVStroke.Parent = FOVCircleFrame
+
+local FOVCorner = Instance.new("UICorner")
+FOVCorner.CornerRadius = UDim.new(1, 0)
+FOVCorner.Parent = FOVCircleFrame
 
     -- Tracer GUI
     TracerGui = Instance.new("ScreenGui")
