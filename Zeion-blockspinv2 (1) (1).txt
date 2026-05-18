@@ -329,40 +329,36 @@ local Icons = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Fo
 
 Icons.SetIconsType("lucide") -- lucide, craft and more...
 
-local function buildGUI()
-    local guiColor1 = Color3.fromHex("#00VCE6") 
-local guiColor2 = Color3.fromHex("#1A2A6C")
-
-    local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
-    
-    local W = WindUI:CreateWindow({ 
-        Title = "Vortex Hub", 
-        Icon = "awords", 
-        Author = "by ยังหลอน",
-        Theme = "Dark"
-    })
-
-    W:EditOpenButton({ 
-        Title = "Vortex Hub", 
-        Icon = "swords", 
-        Color = ColorSequence.new(guiColor1, guiColor2), 
-        Draggable = true 
-    })
-
-    W:Tag({ 
-        Title = "V5.9", 
-        Icon = "crown", 
-        Color = Color3.fromHex("#ffcc00"), 
-        Radius = 13 
-    })
-    
-    return W
-end
-
-buildGUI()
-
-
-
+local Window =
+    WindUI:CreateWindow(
+    {
+        Icon = "rbxassetid://116912491561156", -- my custom vector* icon
+        IconThemed = true,
+        
+        Title = "Zeion Hub | Block Spin ",
+        Author = "by x2SAXZRLzzz",
+        Folder = "zeion's",
+        Size = UDim2.fromOffset(400, 400),
+        MinSize = Vector2.new(560, 350),
+        MaxSize = Vector2.new(850, 560),
+        Transparent = true,
+        Theme = "Dark",
+        Resizable = true,
+        SideBarWidth = 200,
+        BackgroundImageTransparency = 0.42,
+        HideSearchBar = false,
+        ScrollBarEnabled = false,
+        
+        OpenButton = {
+            Title = "Zeion Hub",
+            CornerRadius = UDim.new(1, 0),
+            StrokeThickness = 3,
+            Enabled = true,
+            Draggable = true,
+            OnlyMobile = false
+        }
+    }
+)
 
 Window:Tag(
     {
@@ -1283,33 +1279,36 @@ if not IsMobile then
     TargetHeadCircle.Visible = false
 else
     -- ===== Mobile: ใช้ ScreenGui แบบ Gradient =====
+    
     -- FOV Circle GUI
     FOVCircleGui = Instance.new("ScreenGui")
-FOVCircleGui.Name = "SilentAimFOV"
-FOVCircleGui.IgnoreGuiInset = true
-FOVCircleGui.ResetOnSpawn = false
-FOVCircleGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-FOVCircleGui.Parent = game:GetService("CoreGui")
-
-FOVCircleFrame = Instance.new("Frame")
-FOVCircleFrame.Name = "Circle"
-FOVCircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-FOVCircleFrame.BackgroundTransparency = 1
-FOVCircleFrame.Size = UDim2.new(0, FOVRadius * 2, 0, FOVRadius * 2)
-FOVCircleFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-FOVCircleFrame.Visible = false
-FOVCircleFrame.Parent = FOVCircleGui
-
-local FOVStroke = Instance.new("UIStroke")
-FOVStroke.Thickness = 2 
-FOVStroke.Transparency = 0
-FOVStroke.Color = Color3.fromRGB(255, 235, 59) 
-FOVStroke.Parent = FOVCircleFrame
-
-local FOVCorner = Instance.new("UICorner")
-FOVCorner.CornerRadius = UDim.new(1, 0)
-FOVCorner.Parent = FOVCircleFrame
-
+    FOVCircleGui.Name = "SilentAimFOV"
+    FOVCircleGui.IgnoreGuiInset = true
+    FOVCircleGui.ResetOnSpawn = false
+    FOVCircleGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    FOVCircleGui.Parent = game:GetService("CoreGui")
+    
+    FOVCircleFrame = Instance.new("Frame")
+    FOVCircleFrame.Name = "Circle"
+    FOVCircleFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    FOVCircleFrame.BackgroundTransparency = 1
+    FOVCircleFrame.Size = UDim2.new(0, FOVRadius * 2, 0, FOVRadius * 2)
+    FOVCircleFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    FOVCircleFrame.Visible = false
+    FOVCircleFrame.Parent = FOVCircleGui
+    
+    local FOVStroke = Instance.new("UIStroke")
+    FOVStroke.Thickness = 3
+    FOVStroke.Transparency = 0
+    FOVStroke.Parent = FOVCircleFrame
+    
+    local FOVGradient = Instance.new("UIGradient")
+    FOVGradient.Parent = FOVStroke
+    
+    local FOVCorner = Instance.new("UICorner")
+    FOVCorner.CornerRadius = UDim.new(1, 0)
+    FOVCorner.Parent = FOVCircleFrame
+    
     -- Tracer GUI
     TracerGui = Instance.new("ScreenGui")
     TracerGui.Name = "SilentAimTracer"
